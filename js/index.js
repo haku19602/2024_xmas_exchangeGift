@@ -70,6 +70,86 @@ function shuffleCards(cardsDiv) {
   }
 }
 
+// ===== 添加 reset 按鈕 =====
+function addResetButton() {
+  const resetButton = document.createElement("img")
+  resetButton.src = "./img/reset.svg"
+  resetButton.alt = "reset"
+  resetButton.className = "reset fade-in"
+
+  // 定義按鈕點擊事件
+  resetButton.addEventListener("click", () => {
+    // const inputDiv = document.querySelector(".input_div")
+
+    // // 清空卡片區域
+    // cardsDiv.innerHTML = ""
+
+    // // 顯示輸入框
+    // inputDiv.style.display = "flex"
+    // peopleInput.value = ""
+
+    // // 移除重置按鈕
+    // resetButton.remove()
+    showResetDialog() // 顯示確認視窗
+  })
+
+  // 將按鈕插入 #main
+  const mainElement = document.getElementById("main")
+  mainElement.insertBefore(resetButton, mainElement.firstChild)
+
+  // 按鈕漸漸出現效果
+  setTimeout(() => {
+    resetButton.classList.remove("fade-in")
+  }, 200)
+}
+
+// ===== 顯示確認重置視窗 =====
+function showResetDialog() {
+  // 創建 dialog 元素
+  const dialog = document.createElement("dialog")
+  dialog.className = "reset-dialog"
+
+  // 視窗內容
+  dialog.innerHTML = `
+    <p>確定要重置嗎？</p>
+    <div class="dialog-buttons">
+      <button id="confirm-reset">確定</button>
+      <button id="cancel-reset">取消</button>
+    </div>
+  `
+
+  document.body.appendChild(dialog) // 將 dialog 加到頁面
+
+  // 打開 dialog
+  dialog.showModal()
+
+  // 點擊確認重置
+  document.getElementById("confirm-reset").addEventListener("click", () => {
+    // performReset() // 執行重置動作
+    dialog.close()
+    dialog.remove()
+    
+    const inputDiv = document.querySelector(".input_div")
+
+    // 清空卡片區域
+    cardsDiv.innerHTML = ""
+
+    // 顯示輸入框
+    inputDiv.style.display = "flex"
+    peopleInput.value = ""
+
+    // 移除重置按鈕
+    const resetButton = document.querySelector(".reset")
+    resetButton.remove()
+  })
+
+  // 點擊取消重置
+  document.getElementById("cancel-reset").addEventListener("click", () => {
+    dialog.close()
+    dialog.remove()
+  })
+}
+
 // ===== 開始按鈕點擊 =====
 readyButton.addEventListener("click", () => {
   const numberOfPeople = parseInt(peopleInput.value, 10) // 獲取人數轉換為整數數字
@@ -105,6 +185,7 @@ readyButton.addEventListener("click", () => {
     loadingDiv.remove() // 移除 loading 動畫
     generateCards(numberOfPeople, cardsDiv) // 生成卡片
     shuffleCards(cardsDiv) // 洗牌
+    addResetButton() // 添加重置按鈕
 
     // 延遲 1 秒 -> 觸發第一張卡片點擊事件
     setTimeout(() => {
