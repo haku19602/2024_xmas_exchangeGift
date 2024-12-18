@@ -17,7 +17,7 @@ function randomBg() {
 function generateCards(numberOfPeople, cardsDiv) {
   // 卡片數調整為 3 or 5 的倍數
   let adjustedPeople
-  if (window.innerWidth >= 1024) {
+  if (window.innerWidth > 1024) {
     adjustedPeople = numberOfPeople + (5 - (numberOfPeople % 5)) % 5
   } else {
     adjustedPeople = numberOfPeople + (3 - (numberOfPeople % 3)) % 3
@@ -70,9 +70,17 @@ readyButton.addEventListener("click", () => {
   const numberOfPeople = parseInt(peopleInput.value, 10) // 獲取人數並轉換為整數
   cardsDiv.innerHTML = "" // 清空之前的卡片內容
 
-  if (isNaN(numberOfPeople) || numberOfPeople < 3) {
+  if (isNaN(numberOfPeople)) {
     peopleInput.value = "" // 清空输入框
-    alert("參加人數至少3人！")
+    alert("請輸入數字！")
+    return
+  } else if (numberOfPeople < 3) {
+    peopleInput.value = ""
+    alert("參加人數最少3人！")
+    return
+  } else if (numberOfPeople > 99) {
+    peopleInput.value = ""
+    alert("參加人數最多99人！")
     return
   }
 
