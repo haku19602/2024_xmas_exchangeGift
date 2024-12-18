@@ -24,7 +24,7 @@ function generateCards(numberOfPeople, cardsDiv) {
   for (let i = 1; i <= adjustedPeople; i++) {
     const randomBgClass = randomBg() // 隨機背景 class
     const card = document.createElement("div")
-    card.className = `card card-close ${randomBgClass}`
+    card.className = `card card-close ${randomBgClass} fade-in`
 
     if (i > numberOfPeople) {
       card.classList.add("extra-card") // 餘數卡片 class
@@ -34,7 +34,7 @@ function generateCards(numberOfPeople, cardsDiv) {
       card.textContent = `${i}`
     }
 
-    // 卡片點擊事件
+    // 定義卡片點擊事件
     card.addEventListener("click", () => {
       // 1.移除 .card-close
       card.classList.remove("card-close")
@@ -45,6 +45,11 @@ function generateCards(numberOfPeople, cardsDiv) {
     })
 
     cardsDiv.appendChild(card)
+
+    // 卡片逐漸顯現動畫效果
+    setTimeout(() => {
+      card.classList.remove("fade-in")
+    }, 200)
   }
 }
 
@@ -86,15 +91,26 @@ readyButton.addEventListener("click", () => {
   }
 
   // 隱藏 .input_div
-  const inputDiv = document.querySelector(".input_div") // 取得 .input_div 元素
-  inputDiv.style.display = "none" // 設定 display 為 none
+  const inputDiv = document.querySelector(".input_div")
+  inputDiv.style.display = "none"
 
-  generateCards(numberOfPeople, cardsDiv) // 生成卡片
-  shuffleCards(cardsDiv) // 洗牌
+  // 顯示 loading.svg
+  const loadingDiv = document.createElement("div") // 創建一個 loading 容器
+  loadingDiv.classList.add("loading")
+  loadingDiv.innerHTML = '<img src="../img/loading.svg" alt="loading...">' // 插入 loading.svg 圖片
+  document.body.appendChild(loadingDiv) // 加入到頁面中
 
-  // 觸發第一張卡片點擊事件
+  // 延遲 1 秒 -> 移除 loading、生成卡片
   setTimeout(() => {
-    const allCards = document.querySelectorAll(".card-close") // 選取所有卡片
-    allCards[0].click() // 觸發該卡片的點擊事件
-  }, 300)
+    loadingDiv.remove() // 移除 loading 動畫
+    generateCards(numberOfPeople, cardsDiv) // 生成卡片
+    shuffleCards(cardsDiv) // 洗牌
+
+    // 延遲 1 秒 -> 觸發第一張卡片點擊事件
+    setTimeout(() => {
+      const allCards = document.querySelectorAll(".card-close")
+      allCards[0].click()
+    }, 1000)
+
+  }, 1500)
 })

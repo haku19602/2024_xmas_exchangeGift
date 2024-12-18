@@ -108,7 +108,7 @@ input#ready {
   gap: 8px;
 
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   padding-top: 30px;
   margin: 0 auto;
 }
@@ -127,6 +127,12 @@ input#ready {
   font-weight: 900;
   color: #838a72;
   border: 3px dashed #565a4d;
+  opacity: 1;
+  transition: 2s ease;
+}
+/* 卡片生成動畫樣式 */
+#main>#cards>.card.fade-in {
+  opacity: 0;
 }
 /* 數字卡片 */
 #main>#cards>.card:not(.extra-card) {
@@ -177,6 +183,19 @@ input#ready {
   opacity: 0;
 }
 
+/* ---------- loading 圖片 ---------- */
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.loading>img {
+  width: 300px;
+}
+
 /* [ ++++++++++++++++++++ 平板 425px 以上 ++++++++++++++++++++ ] */
 @media (min-width: 425px) {
   body {
@@ -195,11 +214,6 @@ input#ready {
   h2 {
     font-size: 1.7em;
   }
-
-  /* ========== #main ========== */
-  /* #main {
-    min-height: calc(100vh - 120px - 120px);
-  } */
 
   /* ---------- 卡片區 ---------- */
   #main>#cards {
@@ -223,6 +237,19 @@ input#ready {
   }
 }
 
+/* [ ++++++++++++++++++++ 平板 600px 以上 ++++++++++++++++++++ ] */
+@media (min-width: 590px) {
+  /* ---------- 卡片區 ---------- */
+  #main>#cards>.card:not(.extra-card) {
+    font-size: 100px;
+    perspective: 700px;
+  }
+  
+  #main>#cards>.card.extra-card {
+    font-size: 40px;
+  }
+}
+
 /* [ ++++++++++++++++++++ 電腦版 1025px 以上 ++++++++++++++++++++ ] */
 @media (min-width: 1025px) {
   /* ---------- 卡片區 ---------- */
@@ -233,11 +260,6 @@ input#ready {
   }
 
   #main>#cards>.card:not(.extra-card) {
-    font-size: 100px;
     perspective: 800px;
-  }
-
-  #main>#cards>.card.extra-card {
-    font-size: 36px;
   }
 }
