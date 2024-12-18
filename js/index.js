@@ -6,7 +6,7 @@ const peopleInput = getEleId("people") // 輸入框
 const readyButton = getEleId("ready") // 提交按鈕
 const cardsDiv = getEleId("cards") // 卡片區
 
-// ===== 隨機選擇卡片 after 背景類別 =====
+// ===== 隨機生成卡片背景類別 =====
 function randomBg() {
   const backgrounds = ["bg-1", "bg-2", "bg-3"]
   const randomIndex = Math.floor(Math.random() * backgrounds.length)
@@ -16,19 +16,19 @@ function randomBg() {
 // ===== 生成卡片 =====
 function generateCards(numberOfPeople, cardsDiv) {
   // 卡片數調整為 3 or 5 的倍數
-  let adjustedPeople
-  if (window.innerWidth > 1024) {
-    adjustedPeople = numberOfPeople + (5 - (numberOfPeople % 5)) % 5
-  } else {
-    adjustedPeople = numberOfPeople + (3 - (numberOfPeople % 3)) % 3
-  }
+  const adjustedPeople = window.innerWidth > 1024 ?
+    numberOfPeople + (5 - (numberOfPeople % 5)) % 5
+  :
+    numberOfPeople + (3 - (numberOfPeople % 3)) % 3
 
   for (let i = 1; i <= adjustedPeople; i++) {
+    const randomBgClass = randomBg() // 隨機背景 class
     const card = document.createElement("div")
-    card.className = `card card-close ${randomBg()}` // 隨機加上背景類別
+    card.className = `card card-close ${randomBgClass}`
 
     if (i > numberOfPeople) {
-      card.classList.add("extra-card") // 餘數卡片加一個 class
+      card.classList.add("extra-card") // 餘數卡片 class
+      card.classList.remove("card-close", randomBgClass)
       card.innerHTML = "MERRY <br> XMAS"
     } else {
       card.textContent = `${i}`
@@ -67,9 +67,10 @@ function shuffleCards(cardsDiv) {
 
 // ===== 開始按鈕點擊 =====
 readyButton.addEventListener("click", () => {
-  const numberOfPeople = parseInt(peopleInput.value, 10) // 獲取人數並轉換為整數
+  const numberOfPeople = parseInt(peopleInput.value, 10) // 獲取人數轉換為整數數字
   cardsDiv.innerHTML = "" // 清空之前的卡片內容
 
+  // 錯誤處理
   if (isNaN(numberOfPeople)) {
     peopleInput.value = "" // 清空输入框
     alert("請輸入數字！")
@@ -91,12 +92,9 @@ readyButton.addEventListener("click", () => {
   generateCards(numberOfPeople, cardsDiv) // 生成卡片
   shuffleCards(cardsDiv) // 洗牌
 
-  // 隨機選擇一張卡片並觸發點擊事件
+  // 觸發第一張卡片點擊事件
   setTimeout(() => {
-    const allCards = document.querySelectorAll(".card") // 選取所有卡片
-    // const randomIndex = Math.floor(Math.random() * allCards.length) // 隨機索引
-    // const randomCard = allCards[randomIndex] // 隨機選取的卡片
-    // randomCard.click() // 觸發該卡片的點擊事件
+    const allCards = document.querySelectorAll(".card-close") // 選取所有卡片
     allCards[0].click() // 觸發該卡片的點擊事件
   }, 300)
 })
