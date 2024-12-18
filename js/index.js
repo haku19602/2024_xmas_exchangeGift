@@ -97,7 +97,7 @@ readyButton.addEventListener("click", () => {
   // 顯示 loading.svg
   const loadingDiv = document.createElement("div") // 創建一個 loading 容器
   loadingDiv.classList.add("loading")
-  loadingDiv.innerHTML = '<img src="../img/loading.svg" alt="loading...">' // 插入 loading.svg 圖片
+  loadingDiv.innerHTML = '<img src="./img/loading.svg" alt="loading...">' // 插入 loading.svg 圖片
   document.body.appendChild(loadingDiv) // 加入到頁面中
 
   // 延遲 1 秒 -> 移除 loading、生成卡片
