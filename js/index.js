@@ -149,7 +149,7 @@ function showStartMessage(cardNumber) {
       點開任一張彩繪卡片，<br>
       抽出你的禮物號碼！
     </p>
-    <h5>最後被抽出的玩家得到 ${cardNumber} 號禮物</h5>
+    <h5>最後抽出的玩家得到 ${cardNumber} 號禮物</h5>
     <button id="confirm-start">準備好了</button>
   `
 
@@ -204,6 +204,13 @@ function showEndDialog() {
     }, 1000) // 淡出動畫的持續時間
   }, 3000)
 }
+
+// ===== input Enter 點擊 =====
+peopleInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    readyButton.click() // 模擬點擊開始按鈕
+  }
+})
 
 // ===== 開始按鈕點擊 =====
 readyButton.addEventListener("click", () => {
