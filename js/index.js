@@ -195,14 +195,14 @@ function showEndDialog() {
   document.body.appendChild(dialog)
   dialog.showModal()
 
-  // 2.5 秒後自動關閉提示視窗
+  // 3 秒後自動關閉提示視窗
   setTimeout(() => {
     dialog.classList.add("fade-out") // 添加淡出效果
     setTimeout(() => {
       dialog.close()
       dialog.remove()
     }, 1000) // 淡出動畫的持續時間
-  }, 2500)
+  }, 3000)
 }
 
 // ===== 開始按鈕點擊 =====
