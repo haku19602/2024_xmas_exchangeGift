@@ -146,10 +146,10 @@ function showStartMessage(cardNumber) {
   dialog.innerHTML = `
     <h3>從 ${cardNumber} 號玩家開始！</h3>
     <p>
-      點開任一張彩繪卡片，<br>
-      抽出你的禮物號碼！
+      點開任一彩繪卡片，<br>
+      抽出屬於你的禮物號碼！
     </p>
-    <h5>最後抽出的玩家得到 ${cardNumber} 號禮物</h5>
+    <h5>最後抽出的玩家獲得 ${cardNumber} 號禮物</h5>
     <button id="confirm-start">準備好了</button>
   `
 
