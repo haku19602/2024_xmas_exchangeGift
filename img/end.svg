@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="140.64px" height="62.361px" viewBox="0 0 140.64 62.361"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <polygon fill="#fff" points="121.419,0 132.682,22.174 125.213,22.174 137.298,36.323 129.143,36.323 140.64,52.045 
+    123.347,52.045 123.279,62.361 119.167,62.361 119.102,52.045 101.808,52.045 113.304,36.323 105.148,36.323 117.233,22.174 
+    109.767,22.174 121.027,0 ">
+    <animate attributeName='opacity' calcMode='spline' dur='0.8' values='1;0;1;' keySplines='.5 0 .5 1;.5 0 .5 1' repeatCount='indefinite'></animate>
+  </polygon>
+
+  <polygon fill="#fff" points="70.516,0 81.776,22.174 74.309,22.174 86.395,36.323 78.239,36.323 89.735,52.045 72.442,52.045 
+    72.375,62.361 68.263,62.361 68.197,52.045 50.904,52.045 62.4,36.323 54.245,36.323 66.33,22.174 58.863,22.174 70.123,0 ">
+    <animate attributeName='opacity' calcMode='spline' dur='0.8' values='1;0;1;' keySplines='.5 0 .5 1;.5 0 .5 1' repeatCount='indefinite'></animate>
+  </polygon>
+  
+  <polygon fill="#fff" points="19.612,0 30.873,22.174 23.405,22.174 35.491,36.323 27.335,36.323 38.832,52.045 21.538,52.045 
+    21.472,62.361 17.359,62.361 17.293,52.045 0,52.045 11.496,36.323 3.34,36.323 15.426,22.174 7.958,22.174 19.219,0 ">
+    <animate attributeName='opacity' calcMode='spline' dur='0.8' values='1;0;1;' keySplines='.5 0 .5 1;.5 0 .5 1' repeatCount='indefinite'></animate>
+  </polygon>
+</svg>

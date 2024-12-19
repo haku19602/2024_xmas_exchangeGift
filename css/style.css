@@ -22,20 +22,18 @@ body {
   justify-content: center;
 
   box-sizing: border-box;
-
-  /* border: 1px solid #222; */
 }
 
-h1, h2 {
+#title>h1, #title>h2 {
   text-align: center;
   margin: 0;
 }
 
-h1 {
+#title>h1 {
   font-size: 2.7em;
 }
 
-h2 {
+#title>h2 {
   font-size: 1.4em;
 }
 
@@ -43,8 +41,6 @@ h2 {
 #main {
   box-sizing: border-box;
   width: 100%;
-
-  /* border: 1px solid #222; */
 }
 
 /* 重置按鈕 */
@@ -59,17 +55,22 @@ h2 {
   transition: 2s ease;
 }
 
-/* 重置確認視窗 */
-.reset-dialog {
-  width: 180px;
-  border-radius: 30px;
-  padding: 30px;
+/* ---------- 彈跳視窗 ---------- */
+dialog {
   border: none;
   box-shadow: 0 4px 15px 5px rgba(0, 0, 0, 0.5);
 
   font-size: 18px;
   text-align: center;
   background: #fff;
+}
+
+/* 重置確認視窗 */
+.reset-dialog {
+  width: 180px;
+  border-radius: 30px;
+  padding: 30px;
+  letter-spacing: 0.5px;
 }
 .reset-dialog>p {
   font-size: 18px;
@@ -88,12 +89,75 @@ h2 {
   font-size: 16px;
 }
 button#confirm-reset {
-  background-color: #bb4040;
+  background: #bb4040;
   color: white;
 }
 button#cancel-reset {
-  background-color: #d9d9d9;
-  color: black;
+  background: #d9d9d9;
+  color: #151515;
+}
+
+/* 開始提示視窗 */
+.start-dialog {
+  width: 240px;
+  border-radius: 10px;
+  padding: 20px;
+
+  font-weight: 900;
+
+  opacity: 1;
+  transition: opacity 1s ease;
+  letter-spacing: 0.5px;
+}
+.start-dialog.fade-out {
+  opacity: 0;
+}
+.start-dialog>h3 {
+  font-size: 22px;
+  color: #838a72;
+}
+.start-dialog>p {
+  color: #151515;
+}
+.start-dialog>h5 {
+  color: #151515;
+}
+.start-dialog>button {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: #838a72;
+  cursor: pointer;
+}
+
+/* 結束提示視窗 */
+.end-dialog {
+  width: 250px;
+  border-radius: 10px;
+  padding: 30px 20px;
+
+  background: linear-gradient(45deg, #bb4040 25%, #84a88b 75%);
+
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.end-dialog.fade-out {
+  opacity: 0;
+}
+.end-dialog>p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+}
+.end-dialog>img {
+  width: 120px;
+  height: 100px;
 }
 
 /* ---------- 輸入區 ---------- */
