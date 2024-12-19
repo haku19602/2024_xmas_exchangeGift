@@ -203,6 +203,17 @@ input#people {
 
   color: #84a88b;
   background: none;
+
+  /* 移除 input 原生上下鍵 */
+  -moz-appearance: textfield; /* 適用於 Firefox */
+  -webkit-appearance: none;   /* 適用於 Chrome 和 Safari */
+  appearance: none;           /* 適用於支持標準的瀏覽器 */
+}
+/* 移除 input 原生上下鍵 */
+input#people::-webkit-inner-spin-button, 
+#people::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input#ready {
